@@ -13,36 +13,76 @@ import androidx.compose.ui.platform.LocalContext
 
 private val EcoLightColorScheme = lightColorScheme(
 
+    // Cor principal
+    // Usada em botões principais, elementos selecionados e destaques
     primary = EcoGreen,
     onPrimary = EcoWhite,
+
+    // Cor secundária
+    // Usada em elementos de apoio, como mapa e localização
     secondary = EcoAccent,
-    onSecondary = EcoWhite,
+    onSecondary = EcoText,
+
+    // Cor terciária
+    // Usada em confirmações e destaques alternativos
     tertiary = EcoSuccess,
-    onTertiary = EcoWarning,
+    onTertiary = EcoWhite,
+
+    // Fundo geral das telas
     background = EcoBackground,
     onBackground = EcoText,
-    surface = EcoWhite,
+
+    // Cards, caixas, menus e campos
+    surface = EcoCard,
     onSurface = EcoText,
+
+    // Variação de superfície
+    // Pode ser usada em cards secundários e campos desabilitados
+    surfaceVariant = EcoLight,
+    onSurfaceVariant = EcoTextSecondary,
+
+    // Bordas de campos e componentes
+    outline = EcoCardBorder,
+
+    // Erros
     error = EcoError,
     onError = EcoWhite,
-    surfaceVariant = EcoCard,
-    onSurfaceVariant = EcoLogo,
-    scrim = EcoTextSecondary
+
 )
 
 private val EcoDarkColorScheme = darkColorScheme(
+
+    // Cor principal
     primary = EcoLight,
     onPrimary = EcoBackgroundDark,
+
+    // Cor secundária
     secondary = EcoAccent,
     onSecondary = EcoBackgroundDark,
+
+    // Cor terciária
     tertiary = EcoSuccess,
     onTertiary = EcoBackgroundDark,
+
+    // Fundo geral das telas
     background = EcoBackgroundDark,
     onBackground = EcoTextDark,
+
+    // Cards, caixas, menus e campos
     surface = EcoCardDark,
     onSurface = EcoTextDark,
+
+    // Variação de superfície
+    surfaceVariant = EcoGreenDark,
+    onSurfaceVariant = EcoTextDark,
+
+    // Bordas
+    outline = EcoCardBorder,
+
+    // Erros
     error = EcoError,
-    onError = EcoWhite
+    onError = EcoWhite,
+
 )
 
 @Composable

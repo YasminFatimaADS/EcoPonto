@@ -3,37 +3,36 @@ package br.com.fiap.ecoponto.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Cores principais
-val EcoGreen = Color(0xFF2E7D32)
-val EcoGreenDark = Color(0xFF1B5E20)
-val EcoLight = Color(0xFFE8F5E9)
-val EcoLogo = Color(0xFF388E3C) // Logo
+val EcoGreen = Color(0xFF6F9E50)
+val EcoGreenDark = Color(0xFF365E2A)
+val EcoLight = Color(0xFFDCEBCB)
+val EcoLogo = Color(0xFF4F7D3B)
 
-// Cores de Destaque
-val EcoAccent = Color(0xFF4FC3F7) // Localização / mapa
-val EcoSuccess = Color(0xFF43A047) // Sucesso
-val EcoWarning = Color(0xFFFFD500) // Alertas
-val EcoError = Color(0xFFE53935) // Erros
+// Cores de destaque
+val EcoAccent = Color(0xFF8FB86B)       // Mapa e localização
+val EcoSuccess = Color(0xFF5F8F45)      // Sucesso e confirmação
+val EcoWarning = Color(0xFFD8B85A)      // Alertas suaves
+val EcoError = Color(0xFFC9675B)        // Erros suaves
 
-
-// Cores do texto
-val EcoText = Color(0xFF1C1C1C)
-val EcoTextSecondary = Color(0xFF757575)
-val EcoTextDark = Color(0xFFF1F1F1)
+// Cores de texto
+val EcoText = Color(0xFF294624)
+val EcoTextSecondary = Color(0xFF687561)
+val EcoTextDark = Color(0xFFF4F0DF)
 
 // Cards
-val EcoCard = Color(0xFFF7FDF7)
-val EcoCardBorder = Color(0xFFC8E6C9)
-val EcoCardDark = Color(0xFF1F3523)
+val EcoCard = Color(0xFFFFF5D8)
+val EcoCardBorder = Color(0xFFA9C58D)
+val EcoCardDark = Color(0xFF263D24)
 
 // Mapa
-val EcoMapBackground = Color(0xFFEAF2E7)
-val EcoMapRoad = Color(0xFFD3E1D0)
+val EcoMapBackground = Color(0xFFDCE8CD)
+val EcoMapRoad = Color(0xFFF5EDCF)
 
-//Fundo
-val EcoBackground = Color(0xFFF8FCF8)
-val EcoBackgroundDark = Color(0xFF121212)
+// Fundos
+val EcoBackground = Color(0xFFF8EECB)
+val EcoBackgroundDark = Color(0xFF172218)
 
-//Neutra
+// Cores neutras
 val EcoWhite = Color(0xFFFFFFFF)
-val EcoGrayLight = Color(0xFFF5F5F5)
-val EcoGray = Color(0xFF757575)
+val EcoGrayLight = Color(0xFFF2F0E7)
+val EcoGray = Color(0xFF747A70)

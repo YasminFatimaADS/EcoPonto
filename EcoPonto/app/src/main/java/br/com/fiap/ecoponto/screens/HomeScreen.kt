@@ -33,12 +33,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.ecoponto.R
+import br.com.fiap.ecoponto.components.EcoCard
 import br.com.fiap.ecoponto.navigation.Destination
+import br.com.fiap.ecoponto.ui.theme.EcoAccent
+import br.com.fiap.ecoponto.ui.theme.EcoError
 import br.com.fiap.ecoponto.ui.theme.EcoPontoTheme
+import br.com.fiap.ecoponto.ui.theme.EcoWarning
 
 @Composable
-fun HomeScreen(navController: NavController,
-               email: String?) {
+fun HomeScreen(navController: NavController) {
     Box ( 
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +55,7 @@ fun HomeScreen(navController: NavController,
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            TitleHome(email!!)
+            TitleHome()
             CardHome(navController)
         }
     }
@@ -60,7 +63,7 @@ fun HomeScreen(navController: NavController,
 }
 
 @Composable
-fun TitleHome(email: String?) {
+fun TitleHome() {
 
     Column (
         verticalArrangement = Arrangement.Center,
@@ -70,8 +73,9 @@ fun TitleHome(email: String?) {
             .padding(20.dp)
     ){
         Image(
-            painterResource(R.drawable.ordenacao),
+            painterResource(R.drawable.lixeiradereciclagem),
             contentDescription = ""
+
         )
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -81,21 +85,14 @@ fun TitleHome(email: String?) {
             color = MaterialTheme.colorScheme.primary,
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Row (){
+
             Text(
-                text = "Bem-vindo(a), ",
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.scrim,
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = email ?: "Usuario",
+                text = "Bem-vindo(a), Usuario EcoPonto",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.scrim,
                 textAlign = TextAlign.Center
             )
 
-        }
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
@@ -116,180 +113,44 @@ fun CardHome(navController: NavController) {
             .background(MaterialTheme.colorScheme.background)
     ) {
 
-//card Descarte
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .height(140.dp)
-            .padding(20.dp)
-            .clickable(
-                onClick = {
-                    navController.navigate(
-                        Destination.Descarte.route
-                    )
-                }
-            ),
-            shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.onTertiary
-            ),
-            border = BorderStroke(
-                width = 3.dp,
-                color = MaterialTheme.colorScheme.primary
-            )
-        ) {
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.lixeira),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = "O que descartar?",
-                        color = MaterialTheme.colorScheme.onBackground,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Consulte materiais recicláveis e orientações para descarte correto.",
-                    textAlign =  TextAlign.Center
-
+        //carte Descarte
+        EcoCard(
+            titulo = "O que descartar?",
+            cor = EcoWarning,
+            imagem = painterResource(R.drawable.lixeira),
+            onClick = {
+                navController.navigate(
+                    Destination.Descarte.route
                 )
-            }
+            },
+            descricao = "Consulte materiais recicláveis e orientações para descarte correto."
+        )
 
-        }
-
-        //card Mapa
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .height(140.dp)
-            .padding(20.dp)
-            .clickable(
-                onClick = {
-                    navController.navigate(
-                        Destination.Mapa.route
-                    )
-                }
-            ),
-            shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.error
-            ),
-            border = BorderStroke(
-                width = 3.dp,
-                color = MaterialTheme.colorScheme.primary
-            )
-        ) {
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.lixeira),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = "Pontos de coleta",
-                        color = MaterialTheme.colorScheme.onBackground,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Encontre ecopontos próximos a você.",
-                    textAlign =  TextAlign.Center
-
+        //Card Mapa
+        EcoCard(
+            titulo = "Pontos de coleta",
+            cor = EcoError,
+            imagem = painterResource(R.drawable.distancia),
+            onClick = {
+                navController.navigate(
+                    Destination.Mapa.route
                 )
-            }
-
-        }
+            },
+            descricao = "Encontre ecopontos próximos a você."
+        )
 
         //card perfil
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .height(140.dp)
-            .padding(20.dp)
-            .clickable(
-                onClick = {
-                    navController.navigate(
-                        Destination.Perfil.route
-                    )
-                }
-            ),
-            shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.secondary
-            ),
-            border = BorderStroke(
-                width = 3.dp,
-                color = MaterialTheme.colorScheme.primary
-            )
-        ) {
-
-            Column(
-                modifier = Modifier
-                    .padding(4.dp)
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.lixeira),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(
-                        text = "Meu Perfil",
-                        color = MaterialTheme.colorScheme.onBackground,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Dados do usuário e histórico de utilização.",
-                    textAlign =  TextAlign.Center
-
+        EcoCard(
+            titulo = "Meu Perfil",
+            cor = EcoAccent,
+            imagem = painterResource(R.drawable.editar),
+            onClick = {
+                navController.navigate(
+                    Destination.Perfil.route
                 )
-            }
-
-        }
+            },
+            descricao = "Dados do usuário e histórico de utilização."
+        )
 
     }
 
@@ -308,7 +169,7 @@ fun CardHome(navController: NavController) {
 @Composable
 private fun HomeSreenPreview() {
     EcoPontoTheme {
-        HomeScreen(rememberNavController(),"")
+        HomeScreen(rememberNavController())
     }
 
 }
@@ -333,7 +194,7 @@ private fun CarHomePreview() {
 @Composable
 private fun TitleHomePreview() {
     EcoPontoTheme {
-        TitleHome("")
+        TitleHome()
     }
 
 }

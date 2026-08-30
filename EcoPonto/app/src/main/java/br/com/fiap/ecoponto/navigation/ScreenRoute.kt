@@ -1,5 +1,5 @@
 package br.com.fiap.ecoponto.navigation
-
+import android.net.Uri
 sealed class Destination(val route: String){
 
     object Login : Destination("login")
@@ -8,7 +8,7 @@ sealed class Destination(val route: String){
 
     object Home : Destination("home/{email}")
     {
-        fun createRoute(
+        fun createRouteHome(
             email: String
         ): String
         {
@@ -19,10 +19,16 @@ sealed class Destination(val route: String){
 
     object Descarte : Destination("descarte")
 
-    object Resultado : Destination("resultado")
-
     object Mapa : Destination ("mapa")
 
-    object Perfil : Destination("perfil")
-
+    object Perfil : Destination(
+        route = "perfil?name={name}&email={email}"
+    ) {
+        fun createRoutePerfil(
+            name: String,
+            email: String
+        ): String {
+            return "perfil?name=${Uri.encode(name)}&email=${Uri.encode(email)}"
+        }
+    }
 }
